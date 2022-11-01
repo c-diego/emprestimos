@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap');
+
+* {
+  text-align: justify;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+}
+
+.bg-gray {
+  background-color: #FAFAFA;
+}
+
+.border-gray {
+  border-color: #D0D7DE;
+}
+
+::placeholder {
+  color: #D0D7DE;
+}
+
+p.description {
+  min-height: 48px;
+}

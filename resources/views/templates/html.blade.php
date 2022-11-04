@@ -15,6 +15,8 @@
 
 <body class="bg-gray">
 
+@include('templates.navbar')
+
 @yield('content')
 
 @stack('scripts')

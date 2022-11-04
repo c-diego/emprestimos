@@ -16,14 +16,10 @@ class HomeController extends Controller
 
   public function search(Request $request)
   {
-    //dd(Item::where('title', 'like', '%' . $request->input('term') . '%'));
     return view('home', ['items' => Item::where('title', 'like', '%' . $request->input('term') . '%')->paginate(10)]);
   }
 
-  public function create()
-  {
-    //
-  }
+
 
 
   public function store(Request $request)

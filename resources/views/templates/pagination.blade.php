@@ -34,12 +34,12 @@
                 @if(sizeof($element) == 2)
                   @if(array_key_first($element) <= 1)
                     <li class="page-item rounded-0 bg-gray" aria-current="page">
-                      <span class="page-link">{{ array_key_first($element) }}</span>
+                      <a class="page-link" href="{{$element[array_key_first($element)]}}">{{ array_key_first($element) }}</a>
                     </li>
                     @continue
                   @elseif(array_key_last($element) > 2)
                     <li class="page-item rounded-0 bg-gray" aria-current="page">
-                      <span class="page-link">{{ array_key_last($element) }}</span>
+                      <a class="page-link" href="{{$element[array_key_last($element)]}}">{{ array_key_last($element) }}</a>
                     </li>
                     @continue
                   @endif

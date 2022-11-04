@@ -17,5 +17,5 @@ use App\Http\Controllers\HomeController;
 
 Route::controller(HomeController::class)->group(function () {
   Route::get('/', 'index');
-  Route::get("/home/search", 'search')->name('search');
+  Route::post("/", 'search')->name('search');
 });

@@ -3,20 +3,6 @@
 
 @section('content')
 
-  <div class="container-fluid bg-black text-light pt-3 pb-3 shadow-sm">
-    <div class="container">
-      <div class="row align-items-center justify-content-between">
-        <div class="col-sm align-self-center">
-          <a href="#" class="fs-5 nav-icon fw-bold">Blablabla</a>
-        </div>
-        <div class="col-sm align-self-center text-end">
-          <a href="#" class="fs-6 pe-3 nav-icon">Jubileu</a>
-          <a href="#" class="fs-6 nav-icon">Sair</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Search -->
   <div class="container mt-5">
     <div class="container border border-gray ">
@@ -25,7 +11,7 @@
           <span class="fs-5 p-1 text-light">Pesquisa de Itens</span>
         </div>
       </div>
-      <form method="get" action="{{route('search')}}">
+      <form method="POST" action="{{route('search')}}">
         @csrf
         <div class="row mt-3">
           <div class="col-md-7">
@@ -58,6 +44,9 @@
   <!-- Items -->
   <div class="container mb-5">
     @foreach($items as $item)
+
+      @include('templates.modal', $selectedItem = $item)
+
       <hr class="mb-4">
       <div class="row align-items-center mb-3">
         <div class="col-md-2 text-center">
@@ -72,7 +61,10 @@
           </div>
           <div class="row mt-2 justify-content-center">
             <div class="col text-center text-md-start">
-              <button type="button" class="btn btn-primary rounded-0 fw-semibold ps-5 pe-5 pt-1 pb-1">Solicitar</button>
+              <button type="button" class="btn btn-primary rounded-0 fw-semibold ps-5 pe-5 pt-1 pb-1"
+                      data-bs-toggle="modal" data-bs-target="#modal{{$item->id}}">
+                Solicitar
+              </button>
             </div>
           </div>
         </div>

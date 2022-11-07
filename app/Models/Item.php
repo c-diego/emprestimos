@@ -13,5 +13,9 @@ class Item extends Model
     'image',
     'title',
     'description',
+    'available',
+    'days_available',
+    'observation',
+    'amount'
   ];
 }

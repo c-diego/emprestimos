@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -19,35 +18,8 @@ class HomeController extends Controller
     return view('home', ['items' => Item::where('title', 'like', '%' . $request->input('term') . '%')->paginate(10)]);
   }
 
-
-
-
-  public function store(Request $request)
-  {
-    //
+  public function request(Request $request) {
+    return redirect('/');
   }
 
-
-  public function show($id)
-  {
-    //
-  }
-
-
-  public function edit($id)
-  {
-    //
-  }
-
-
-  public function update(Request $request, $id)
-  {
-    //
-  }
-
-
-  public function destroy($id)
-  {
-    //
-  }
 }

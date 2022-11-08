@@ -45,10 +45,6 @@
   <div class="container mb-5">
     @foreach($items as $item)
 
-      @if($item->available)
-        @include('templates.modal', $selectedItem = $item)
-      @endif
-
       <hr class="mb-4">
       <div class="row align-items-center mb-3">
         <div class="col-md-2 text-center">
@@ -63,11 +59,10 @@
           </div>
           <div class="row mt-2 justify-content-center">
             <div class="col text-center text-md-start">
-              <button type="button"
-                      class="btn btn-primary rounded-0 fw-semibold ps-5 pe-5 pt-1 pb-1 {{$item->available ? '' : 'disabled'}}"
-                      data-bs-toggle="modal" data-bs-target="#modal{{$item->id}}">
+              <a href="{{route('item', ['item' => $item])}}"
+                 class="btn btn-primary rounded-0 fw-semibold ps-5 pe-5 pt-1 pb-1 {{$item->available ? '' : 'disabled'}}">
                 Solicitar
-              </button>
+              </a>
             </div>
           </div>
         </div>

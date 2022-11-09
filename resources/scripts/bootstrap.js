@@ -1,5 +1,8 @@
-import _ from 'lodash';
+import _ from 'lodash'
 window._ = _;
+
+import Datepicker from '../../node_modules/vanillajs-datepicker/js/Datepicker.js';
+window.Datepicker = Datepicker;
 
 import '../sass/app.scss'
 import  '../css/index.css'

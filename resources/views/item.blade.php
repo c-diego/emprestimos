@@ -43,9 +43,8 @@
           <label for="startDate" class="form-label">Data de Retirada</label>
           <input id="startDate" type="text" name="startDate" class="form-control">
 
-          <label id="daysDevolutionLabel" for="daysDevolution" class="form-label mt-2">Devolver em 1 Dia(s)</label>
-          <input id="daysDevolution" type="number" name="daysDevolution" min="1" max="{{$item->days_available}}" required
-                 value="{{ old('days_available') }}" class="form-control">
+          <label for="endDate" class="form-label mt-2">Data de Retirada</label>
+          <input id="endDate" type="text" name="endDate" class="form-control">
 
           <label for="amount" class="form-label mt-2">Quantidade</label>
           <input id="amount" type="number" name="amount" max="{{$item->amount}}" min="1" required
@@ -62,4 +61,28 @@
     </div>
   </div>
 
+  @push('scripts')
+    <script type="module">
+      const elem = document.querySelector('input[name="startDate"]');
+      const datepicker = new Datepicker(elem, {
+        buttonClass: 'btn',
+        autohide: true,
+        daysOfWeekDisabled: [0,6],
+        datesDisabled: ["11/22/2022", "11/23/2022", "11/24/2022"],
+        showDaysOfWeek: true,
+        minDate: new Date().toLocaleDateString(),
+      });
+
+      const elem2 = document.querySelector('input[name="endDate"]');
+      const datepicker2 = new Datepicker(elem2, {
+        buttonClass: 'btn',
+        autohide: true,
+        daysOfWeekDisabled: [0,6],
+        datesDisabled: ["11/22/2022", "11/23/2022", "11/24/2022"],
+        showDaysOfWeek: true,
+        minDate: new Date().toLocaleDateString(),
+      });
+
+    </script>
+  @endpush
 @endsection

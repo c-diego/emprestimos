@@ -41,8 +41,7 @@
         <form action="{{route('reserve', ['item' => $item])}}" method="POST">
           @csrf
           <label for="startDate" class="form-label">Data de Retirada</label>
-          <input id="startDate" type="date" name="startDate" min="{{date('Y-m-d')}}" required value="{{ old('startDate') }}"
-                 class="form-control">
+          <input id="startDate" type="text" name="startDate" class="form-control">
 
           <label id="daysDevolutionLabel" for="daysDevolution" class="form-label mt-2">Devolver em 1 Dia(s)</label>
           <input id="daysDevolution" type="number" name="daysDevolution" min="1" max="{{$item->days_available}}" required
@@ -62,15 +61,5 @@
       </div>
     </div>
   </div>
-
-  @push('scripts')
-    <script>
-      document.getElementById('daysDevolution').onchange = changeLabel;
-      function changeLabel() {
-        var days = document.getElementById('daysDevolution').value;
-        document.getElementById('daysDevolutionLabel').innerHTML = "Devolver em " + days + " Dia(s)";
-      }
-    </script>
-  @endpush
 
 @endsection

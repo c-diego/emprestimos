@@ -1,6 +1,10 @@
 import _ from 'lodash';
 window._ = _;
 
+import '../sass/app.scss'
+import  '../css/index.css'
+import * as bootstrap from 'bootstrap';
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
@@ -20,7 +24,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 // import Echo from 'laravel-echo';
 
-// import Pusher from 'pusher-js';
+// import Pusher from 'pusher-scripts';
 // window.Pusher = Pusher;
 
 // window.Echo = new Echo({

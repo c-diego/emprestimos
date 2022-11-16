@@ -27,8 +27,8 @@ class ReserveItemRequest extends FormRequest
       $item = $this->route('item');
 
         return [
-            'startDate' => 'required|after_or_equal:' . date('Y-m-d'),
-            'daysDevolution' => 'required|between:1,' . $item->days_available,
+            'start_date' => 'required|after_or_equal:' . date('Y-m-d'),
+            'end_date' => 'required|after_or_equal:' . date('Y-m-d'),
             'amount' => 'required|between:1,'.$item->amount,
         ];
     }

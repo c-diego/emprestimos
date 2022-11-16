@@ -20,7 +20,7 @@ class ItemFactory extends Factory
       'image' => "https://dummyimage.com/160x160/5c5c5c/fff",
       'title' => fake()->words(3, true),
       'description' => fake()->text(200),
-      'available' => fake()->boolean(),
+      'is_available' => fake()->boolean(),
       'days_available' => fake()->randomDigitNotNull(),
       'observation' => fake()->text(80),
       'amount' => fake()->randomNumber(3, false)

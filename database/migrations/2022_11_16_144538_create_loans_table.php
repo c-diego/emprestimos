@@ -12,16 +12,14 @@ return new class extends Migration {
    */
   public function up()
   {
-    Schema::create('items', function (Blueprint $table) {
+    Schema::create('loans', function (Blueprint $table) {
       $table->id();
-      $table->string('image');
-      $table->string('title');
-      $table->text('description');
-      $table->boolean('is_available');
-      $table->integer('days_available');
-      $table->string('observation');
-      $table->integer('amount');
+      $table->date('start_date');
+      $table->date('end_date');
+      $table->boolean('has_ended');
       $table->timestamps();
+      $table->foreignId('item_id')->constrained('items')->onDelete('cascade');
+      $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
     });
   }
 
@@ -32,6 +30,6 @@ return new class extends Migration {
    */
   public function down()
   {
-    Schema::dropIfExists('items');
+    Schema::dropIfExists('loans');
   }
 };

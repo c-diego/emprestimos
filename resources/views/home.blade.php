@@ -60,7 +60,7 @@
           <div class="row mt-2 justify-content-center">
             <div class="col text-center text-md-start">
               <a href="{{route('item', ['item' => $item])}}"
-                 class="btn btn-primary rounded-0 fw-semibold ps-5 pe-5 pt-1 pb-1 {{$item->available ? '' : 'disabled'}}">
+                 class="btn btn-primary rounded-0 fw-semibold ps-5 pe-5 pt-1 pb-1 {{$item->is_available ? '' : 'disabled'}}">
                 Solicitar
               </a>
             </div>

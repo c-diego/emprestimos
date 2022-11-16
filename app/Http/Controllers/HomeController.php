@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ReserveItemRequest;
 use App\Models\Item;
+use App\Models\Loan;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,7 +27,9 @@ class HomeController extends Controller
 
   public function reserveItem(Item $item, ReserveItemRequest $reserveItemRequest) {
     $validated = $reserveItemRequest->validated();
-    dd($validated);
+    $loan = new Loan();
+    $loan->fill($validated);
+    Loan::saveLoan($loan);
     return redirect('/');
   }
 

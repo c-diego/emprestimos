@@ -40,11 +40,11 @@
       <div class="col">
         <form action="{{route('reserve', ['item' => $item])}}" method="POST">
           @csrf
-          <label for="startDate" class="form-label">Data de Retirada</label>
-          <input id="startDate" type="text" name="startDate" class="form-control">
+          <label for="start_date" class="form-label">Data de Retirada</label>
+          <input id="start_date" type="text" name="start_date" class="form-control">
 
-          <label for="endDate" class="form-label mt-2">Data de Retirada</label>
-          <input id="endDate" type="text" name="endDate" class="form-control">
+          <label for="end_date" class="form-label mt-2">Data de Entrega</label>
+          <input id="end_date" type="text" name="end_date" class="form-control">
 
           <label for="amount" class="form-label mt-2">Quantidade</label>
           <input id="amount" type="number" name="amount" max="{{$item->amount}}" min="1" required
@@ -63,25 +63,18 @@
 
   @push('scripts')
     <script type="module">
-      const elem = document.querySelector('input[name="startDate"]');
-      const datepicker = new Datepicker(elem, {
+      const options = {
         buttonClass: 'btn',
         autohide: true,
-        daysOfWeekDisabled: [0,6],
-        datesDisabled: ["11/22/2022", "11/23/2022", "11/24/2022"],
+        daysOfWeekDisabled: [0, 6],
         showDaysOfWeek: true,
         minDate: new Date().toLocaleDateString(),
-      });
+      }
+      const elem = document.querySelector('input[name="start_date"]');
+      const elem2 = document.querySelector('input[name="end_date"]');
 
-      const elem2 = document.querySelector('input[name="endDate"]');
-      const datepicker2 = new Datepicker(elem2, {
-        buttonClass: 'btn',
-        autohide: true,
-        daysOfWeekDisabled: [0,6],
-        datesDisabled: ["11/22/2022", "11/23/2022", "11/24/2022"],
-        showDaysOfWeek: true,
-        minDate: new Date().toLocaleDateString(),
-      });
+      const datepicker = new Datepicker(elem, options);
+      const datepicker2 = new Datepicker(elem2, options);
 
     </script>
   @endpush

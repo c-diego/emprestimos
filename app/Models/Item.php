@@ -9,13 +9,19 @@ class Item extends Model
 {
   use HasFactory;
 
+  public function loan()
+  {
+    return $this->hasMany(Loan::class);
+  }
+
   protected $fillable = [
     'image',
     'title',
     'description',
-    'available',
+    'is_available',
     'days_available',
     'observation',
     'amount'
   ];
+
 }

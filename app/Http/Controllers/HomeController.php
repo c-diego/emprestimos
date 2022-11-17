@@ -15,6 +15,12 @@ class HomeController extends Controller
     return view('home', ['items' => Item::paginate(10)]);
   }
 
+  public function profile()
+  {
+    return view('profile');
+  }
+
+
   public function search(Request $request)
   {
     return view('home', ['items' => Item::where('title', 'like', '%' . $request->input('term') . '%')->paginate(10)]);
@@ -25,11 +31,12 @@ class HomeController extends Controller
     return view('item', ['item' => $item]);
   }
 
-  public function reserveItem(Item $item, ReserveItemRequest $reserveItemRequest) {
+  public function reserveItem(Item $item, ReserveItemRequest $reserveItemRequest)
+  {
     $validated = $reserveItemRequest->validated();
     $loan = new Loan();
     $loan->fill($validated);
-    Loan::saveLoan($loan);
+    Loan::saveLoan($loan, $item);
     return redirect('/');
   }
 

@@ -5,7 +5,7 @@
         <a href="{{route('home')}}" class="fs-5 nav-icon fw-bold">Blablabla</a>
       </div>
       <div class="col-sm align-self-center text-end">
-        <a href="#" class="fs-6 pe-3 nav-icon">Jubileu</a>
+        <a href="{{route('profile')}}" class="fs-6 pe-3 nav-icon">Jubileu</a>
         <a href="#" class="fs-6 nav-icon">Sair</a>
       </div>
     </div>

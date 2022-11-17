@@ -27,11 +27,18 @@ class Loan extends Model
 
   public static function saveLoan(Loan $loan, Item $item)
   {
-    // FAT models, Thin controllers; Toda lógica de banco de dados deverá estar nos modelos;
-    // Onde ficará as regras de negócio?
+
     if (!$item->is_available) {
       return false;
     }
-    dd($loan->start_date);
+    $loan->has_ended = false;
+    $loan->save();
   }
+
+  public static function loans(User $user)
+  {
+    $loans = $user->loan();
+    dd($loans);
+  }
+
 }

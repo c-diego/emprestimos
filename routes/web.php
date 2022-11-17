@@ -15,6 +15,7 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::controller(HomeController::class)->group(function () {
+  Route::get('/profile', 'profile')->name('profile');
   Route::get('/', 'index')->name('home');
   Route::post('/', 'search')->name('search');
   Route::get('/item/{item}', 'showItem')->name('item');

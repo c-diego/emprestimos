@@ -51,62 +51,15 @@
       </tr>
       </thead>
       <tbody class="">
-      <tr>
-        <td>Projetor</td>
-        <td>26/10/2022</td>
-        <td>28/10/2022</td>
-        <td>1</td>
-        <td>Aprovado</td>
-      </tr>
-      <tr>
-        <td>Projetor</td>
-        <td>26/10/2022</td>
-        <td>28/10/2022</td>
-        <td>1</td>
-        <td>Aprovado</td>
-      </tr>
-      <tr>
-        <td>Projetor</td>
-        <td>26/10/2022</td>
-        <td>28/10/2022</td>
-        <td>1</td>
-        <td>Aprovado</td>
-      </tr>
-      <tr>
-        <td>Projetor</td>
-        <td>26/10/2022</td>
-        <td>28/10/2022</td>
-        <td>1</td>
-        <td>Aprovado</td>
-      </tr>
-      <tr>
-        <td>Projetor</td>
-        <td>26/10/2022</td>
-        <td>28/10/2022</td>
-        <td>1</td>
-        <td>Aprovado</td>
-      </tr>
-      <tr>
-        <td>Projetor</td>
-        <td>26/10/2022</td>
-        <td>28/10/2022</td>
-        <td>1</td>
-        <td>Aprovado</td>
-      </tr>
-      <tr>
-        <td>Projetor</td>
-        <td>26/10/2022</td>
-        <td>28/10/2022</td>
-        <td>1</td>
-        <td>Aprovado</td>
-      </tr>
-      <tr>
-        <td>Projetor</td>
-        <td>26/10/2022</td>
-        <td>28/10/2022</td>
-        <td>1</td>
-        <td>Aprovado</td>
-      </tr>
+      @foreach($loans as $loan)
+        <tr>
+          <td>{{$loan->item->title}}</td>
+          <td>{{$loan->start_date}}</td>
+          <td>{{$loan->end_date}}</td>
+          <td>{{$loan->amount}}</td>
+          <td>Aprovado</td>
+        </tr>
+      @endforeach
       </tbody>
     </table>
   </div>

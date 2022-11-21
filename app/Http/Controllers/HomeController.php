@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ReserveItemRequest;
 use App\Models\Item;
 use App\Models\Loan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,7 +18,7 @@ class HomeController extends Controller
 
   public function profile()
   {
-    return view('profile');
+    return view('profile', ['loans' => User::find(1)->loans]);
   }
 
 
@@ -36,6 +37,7 @@ class HomeController extends Controller
     $validated = $reserveItemRequest->validated();
     $loan = new Loan();
     $loan->fill($validated);
+    $loan->has_ended = false;
     Loan::saveLoan($loan, $item);
     return redirect('/');
   }

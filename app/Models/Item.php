@@ -9,7 +9,7 @@ class Item extends Model
 {
   use HasFactory;
 
-  public function loan()
+  public function loans()
   {
     return $this->hasMany(Loan::class);
   }

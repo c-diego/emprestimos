@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-
+use \App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,8 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::view('/login', 'login');
+Route::get('/auth', [LoginController::class, 'authenticate'])->name('auth');
 
 Route::controller(HomeController::class)->group(function () {
   Route::get('/profile', 'profile')->name('profile');

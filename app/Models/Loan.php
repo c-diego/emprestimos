@@ -22,7 +22,8 @@ class Loan extends Model
   protected $fillable = [
     'start_date',
     'end_date',
-    'has_ended'
+    'has_ended',
+    'amount'
   ];
 
   public static function saveLoan(Loan $loan, Item $item)
@@ -31,7 +32,8 @@ class Loan extends Model
     if (!$item->is_available) {
       return false;
     }
-    $loan->has_ended = false;
+    $loan->item()->associate($item);
+    $loan->user()->associate(User::find(1));
     $loan->save();
   }
 

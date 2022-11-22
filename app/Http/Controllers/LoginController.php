@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,17 +11,28 @@ class LoginController extends Controller
   /**
    * Handle an authentication attempt.
    *
-   * @param  \Illuminate\Http\Request $request
+   * @param \Illuminate\Http\Request $request
    *
    * @return Response
    */
-  public function authenticate(Request $request)
+  public function authenticate(LoginRequest $loginRequest)
   {
-    $credentials = $request->only('email', 'password');
+    $validated = $loginRequest->validated();
 
-    if (Auth::attempt($credentials)) {
+    if (Auth::attempt($validated)) {
       // Authentication passed...
-      return redirect()->intended('home');
+      return redirect()->intended('/');
     }
+  }
+
+  public function formLogin()
+  {
+    return view('login');
+  }
+
+  public function logout()
+  {
+    Auth::logout();
+    return redirect('login');
   }
 }

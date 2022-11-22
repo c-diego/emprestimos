@@ -17,14 +17,20 @@
           <div class="col-md-7">
             <div class="input-group mb-3">
               <input type="text" name="term" class="form-control bg-gray border-gray rounded-0 pt-1 pb-1"
-                     placeholder="Adaptadorzim">
+                     placeholder="Nome do objeto">
             </div>
           </div>
         </div>
         <div class="row mb-3">
           <div class="col-md-7 mb-md-0 mb-3">
             <select name="sector" class="form-select bg-gray border-gray rounded-0 pt-1 pb-1">
-              <option selected value="cogeti">COGETI</option>
+              @foreach($setors as $setor)
+                @if (!$loop->first)
+                  <option value="{{$setor}}">{{$setor}}</option>
+                @else
+                  <option selected value="{{$setor}}">{{$setor}}</option>
+                @endif
+              @endforeach
             </select>
           </div>
           <div class="col">

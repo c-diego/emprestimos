@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Loan extends Model
 {
@@ -33,13 +34,13 @@ class Loan extends Model
       return false;
     }
     $loan->item()->associate($item);
-    $loan->user()->associate(User::find(1));
+    $loan->user()->associate(Auth::user());
     $loan->save();
   }
 
-  public static function loans(User $user)
+  public static function loans()
   {
-    $loans = $user->loan();
+    $loans = Auth::user()->loan();
     dd($loans);
   }
 

@@ -13,13 +13,17 @@ use \App\Http\Controllers\LoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::view('/login', 'login');
-Route::get('/auth', [LoginController::class, 'authenticate'])->name('auth');
+
+Route::controller(LoginController::class)->group(function() {
+  Route::post('login', 'authenticate')->name('login');
+  Route::get('login', 'formLogin')->name('login');
+  Route::get('logout', 'logout')->name('logout');
+});
 
 Route::controller(HomeController::class)->group(function () {
-  Route::get('/profile', 'profile')->name('profile');
   Route::get('/', 'index')->name('home');
   Route::post('/', 'search')->name('search');
+  Route::get('/profile', 'profile')->middleware('auth')->name('profile');
   Route::get('/item/{item}', 'showItem')->name('item');
-  Route::post('/reserve/{item}', 'reserveItem')->name('reserve');
+  Route::post('/reserve/{item}', 'reserveItem')->middleware('auth')->name('reserve');
 });

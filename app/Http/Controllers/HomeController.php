@@ -5,31 +5,32 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ReserveItemRequest;
 use App\Models\Item;
 use App\Models\Loan;
+use App\Models\Sector;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
 
   public function index()
   {
-    return view('home', ['items' => Item::paginate(10)]);
+    return view('home', ['items' => Item::paginate(10), 'setors' => Sector::all()]);
   }
 
   public function profile()
   {
-    return view('profile', ['loans' => User::find(1)->loans]);
+    return view('user.profile', ['loans' => Auth::user()->loans]);
   }
-
 
   public function search(Request $request)
   {
-    return view('home', ['items' => Item::where('title', 'like', '%' . $request->input('term') . '%')->paginate(10)]);
+    return view('home', ['items' => Item::where('title', 'like', '%' . $request->input('term') . '%')->paginate(10), 'setors' => Sector::all()]);
   }
 
   public function showItem(Item $item)
   {
-    return view('item', ['item' => $item]);
+    return view('user.item', ['item' => $item]);
   }
 
   public function reserveItem(Item $item, ReserveItemRequest $reserveItemRequest)

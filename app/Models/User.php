@@ -12,11 +12,6 @@ class User extends Authenticatable
 {
   use HasApiTokens, HasFactory, Notifiable;
 
-  public function loans()
-  {
-    return $this->hasMany(Loan::class);
-  }
-
   /**
    * The attributes that are mass assignable.
    *
@@ -46,4 +41,10 @@ class User extends Authenticatable
     'email_verified_at' => 'datetime',
   ];
 
+  public function loans()
+  {
+    return $this->hasMany(Loan::class);
+  }
+
 }
+

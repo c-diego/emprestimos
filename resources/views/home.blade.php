@@ -24,11 +24,11 @@
         <div class="row mb-3">
           <div class="col-md-7 mb-md-0 mb-3">
             <select name="sector" class="form-select bg-gray border-gray rounded-0 pt-1 pb-1">
-              @foreach($setors as $setor)
+              @foreach($sectors as $sector)
                 @if (!$loop->first)
-                  <option value="{{$setor}}">{{$setor}}</option>
+                  <option value="{{$sector->id}}">{{$sector->shortname}}</option>
                 @else
-                  <option selected value="{{$setor}}">{{$setor}}</option>
+                  <option selected value="{{$sector->id}}">{{$sector->shortname}}</option>
                 @endif
               @endforeach
             </select>

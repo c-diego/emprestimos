@@ -14,9 +14,12 @@ class Sector extends Model
     'fullname'
   ];
 
-  public static function items()
+  public function items()
   {
-    $loans = $user->loan();
-    dd($loans);
+    return $this->hasMany(Item::class);
+  }
+
+  public function sector() {
+    return $this->belongsTo(Sector::class);
   }
 }

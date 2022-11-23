@@ -15,7 +15,7 @@ class HomeController extends Controller
 
   public function index()
   {
-    return view('home', ['items' => Item::paginate(10), 'setors' => Sector::all()]);
+    return view('home', ['items' => Item::paginate(10), 'sectors' => Sector::all()]);
   }
 
   public function profile()
@@ -25,7 +25,7 @@ class HomeController extends Controller
 
   public function search(Request $request)
   {
-    return view('home', ['items' => Item::where('title', 'like', '%' . $request->input('term') . '%')->paginate(10), 'setors' => Sector::all()]);
+    return view('home', ['items' => Item::where('title', 'like', '%' . $request->input('term') . '%')->where('sector_id', $request->input('sector'))->paginate(10), 'setors' => Sector::all()]);
   }
 
   public function showItem(Item $item)

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Sector;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -23,7 +24,8 @@ class ItemFactory extends Factory
       'is_available' => fake()->boolean(),
       'days_available' => fake()->randomDigitNotNull(),
       'observation' => fake()->text(80),
-      'amount' => fake()->randomNumber(3, false)
+      'amount' => fake()->randomNumber(3, false),
+      'sector_id' =>  fake()->randomDigitNotNull()
     ];
   }
 }

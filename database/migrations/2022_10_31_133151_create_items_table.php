@@ -21,6 +21,7 @@ return new class extends Migration {
       $table->integer('days_available');
       $table->string('observation');
       $table->integer('amount');
+      $table->foreignId('sector_id')->constrained()->onDelete('cascade');
       $table->timestamps();
     });
   }

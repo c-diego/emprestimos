@@ -10,16 +10,6 @@ class Loan extends Model
 {
   use HasFactory;
 
-  public function item()
-  {
-    return $this->belongsTo(Item::class);
-  }
-
-  public function user()
-  {
-    return $this->belongsTo(User::class);
-  }
-
   protected $fillable = [
     'start_date',
     'end_date',
@@ -38,10 +28,14 @@ class Loan extends Model
     $loan->save();
   }
 
-  public static function loans()
+  public function item()
   {
-    $loans = Auth::user()->loan();
-    dd($loans);
+    return $this->belongsTo(Item::class);
+  }
+
+  public function user()
+  {
+    return $this->belongsTo(User::class);
   }
 
 }

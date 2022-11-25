@@ -14,12 +14,12 @@ return new class extends Migration {
   {
     Schema::create('items', function (Blueprint $table) {
       $table->id();
-      $table->string('image');
+      $table->string('image')->default('https://dummyimage.com/160x160/5c5c5c/fff');
       $table->string('title');
-      $table->text('description');
+      $table->text('description')->nullable();
       $table->boolean('is_available');
       $table->integer('days_available');
-      $table->string('observation');
+      $table->string('observation')->nullable();
       $table->integer('amount');
       $table->foreignId('sector_id')->constrained()->onDelete('cascade');
       $table->timestamps();

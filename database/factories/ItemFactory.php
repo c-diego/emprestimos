@@ -18,7 +18,7 @@ class ItemFactory extends Factory
   public function definition()
   {
     return [
-      'image' => "https://dummyimage.com/160x160/5c5c5c/fff",
+      'image' => 'https://dummyimage.com/160x160/5c5c5c/fff',
       'title' => fake()->words(3, true),
       'description' => fake()->text(200),
       'is_available' => fake()->boolean(),

@@ -22,6 +22,8 @@ class LoginController extends Controller
     if (Auth::attempt($validated)) {
       // Authentication passed...
       return redirect()->intended('/');
+    } else {
+      dd("senha errada");
     }
   }
 

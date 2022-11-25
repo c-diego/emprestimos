@@ -18,12 +18,12 @@
     </div>
   @endif
 
-  <div class="container mt-5">
+  <div class="container mt-5 text-center">
     <div class="row align-items-center">
-      <div class="col col-sm-2 text-center">
-        <img src="{{$item->image}}" alt="Imagem do Item" class="img-fluid">
+      <div class="col-md-4 mb-lg-0 mb-3 text-center">
+        <img src="{{asset('storage/'.$item->image)}}" alt="Imagem do Item" class="img-fluid">
       </div>
-      <div class="col">
+      <div class="col-md-4">
         <div class="row">
           <h2 class="fs-6 text-center text-md-start fw-bold">{{$item->title}}</h2>
         </div>
@@ -37,7 +37,7 @@
           <p class="text-center description text-md-start">{{$item->observation}}</p>
         </div>
       </div>
-      <div class="col">
+      <div class="col-md-4">
         <form action="{{route('reserve', ['item' => $item])}}" method="POST">
           @csrf
           <label for="start_date" class="form-label">Data de Retirada</label>

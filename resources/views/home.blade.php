@@ -54,7 +54,7 @@
       <hr class="mb-4">
       <div class="row align-items-center mb-3">
         <div class="col-md-2 text-center">
-          <img src="{{$item->image}}" alt="Imagem do Item" class="img-fluid">
+          <img src="{{asset('storage/'.$item->image)}}" alt="Imagem do Item" class="img-fluid">
         </div>
         <div class="col mt-3 mt-lg-0">
           <h2 class="fs-6 text-center text-md-start fw-bold">{{$item->title}}</h2>

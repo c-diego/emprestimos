@@ -14,6 +14,11 @@ class Item extends Model
     return $this->hasMany(Loan::class);
   }
 
+  public function sector()
+  {
+    return $this->belongsTo(Sector::class);
+  }
+
   protected $fillable = [
     'image',
     'title',

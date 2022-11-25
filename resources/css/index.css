@@ -28,3 +28,9 @@ h1, h2, h3, h4, h5 {
 p.description {
   min-height: 48px;
 }
+
+body p.ellipse {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

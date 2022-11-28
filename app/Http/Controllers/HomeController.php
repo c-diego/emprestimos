@@ -25,6 +25,8 @@ class HomeController extends Controller
 
   public function search(Request $request)
   {
+    if ($request->input('sector') == 'todos')
+      return view('home', ['items' => Item::where('title', 'like', '%' . $request->input('term') . '%')->paginate(10), 'sectors' => Sector::all()]);
     return view('home', ['items' => Item::where('title', 'like', '%' . $request->input('term') . '%')->where('sector_id', $request->input('sector'))->paginate(10), 'sectors' => Sector::all()]);
   }
 

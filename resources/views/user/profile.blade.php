@@ -12,18 +12,6 @@
           <input type="text" class="form-control bg-cinza rounded-0 pt-1 pb-1" placeholder="Adaptadorzim">
         </div>
         <div class="col">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-          <label class="form-check-label" for="flexRadioDefault1">Solicitado</label>
-        </div>
-        <div class="col">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-          <label class="form-check-label" for="flexRadioDefault2">Respondido</label>
-        </div>
-        <div class="col">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
-          <label class="form-check-label" for="flexCheckIndeterminate">Devolvido</label>
-        </div>
-        <div class="col">
           <select class="form-select bg-cinza rounded-0 pt-1 pb-1">
             <option selected>7 dias</option>
             <option>30 dias</option>

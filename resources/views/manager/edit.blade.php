@@ -20,7 +20,7 @@
   @endif
 
   <div class="container mt-5 mb-5">
-    <form action="{{route('manager.update', ['item' => $item])}}" method="post">
+    <form enctype="multipart/form-data" action="{{route('manager.update', ['item' => $item])}}" method="post">
       @csrf
       <div class="row justify-content-center">
         <div class="col col-lg-6">

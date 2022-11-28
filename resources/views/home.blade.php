@@ -28,7 +28,7 @@
                 @if (!$loop->first)
                   <option value="{{$sector->id}}">{{$sector->shortname}}</option>
                 @else
-                  <option selected value="{{$sector->id}}">{{$sector->shortname}}</option>
+                  <option selected value="todos">Todos</option>
                 @endif
               @endforeach
             </select>

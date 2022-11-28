@@ -32,10 +32,6 @@
           <p class="text-center description text-md-start">{{$item->description}}</p>
         </div>
 
-        <div class="row">
-          <h3 class="fs-6 text-center text-md-start fw-bold">Observações</h3>
-          <p class="text-center description text-md-start">{{$item->observation}}</p>
-        </div>
       </div>
       <div class="col-md-4">
         <form action="{{route('reserve', ['item' => $item])}}" method="POST">

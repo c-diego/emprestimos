@@ -7,16 +7,22 @@ use App\Models\Item;
 use App\Models\Sector;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ManagerController extends Controller
 {
   public function items()
   {
-    return view('manager.items', ['items' => Item::all()]);
+    if (Auth::user()->is_manager)
+      return view('manager.items', ['items' => Item::all()]);
+    return redirect()->intended(route('home'));
   }
 
   public function delete(Item $item)
   {
+    if ($item->image != null)
+      Storage::delete($item->image);
     $item->delete();
     return redirect()->intended(route('manager.items'));
   }
@@ -55,6 +61,7 @@ class ManagerController extends Controller
       $path = $file->store('images', 'public');
       $validated['image'] = $path;
     }
+    $item->is_available = true;
     $item->fill($validated);
     $item->save();
     return redirect()->intended(route('manager.items'));

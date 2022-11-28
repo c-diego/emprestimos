@@ -20,10 +20,8 @@
     </div>
 
     @foreach($items as $item)
-      @if(!$loop->first)
         <hr class="mb-4">
-      @endif
-      <div class="row text-center align-items-center mb-3">
+        <div class="row text-center align-items-center mb-3">
         <div class="col-12 col-lg-1">
           <img src="{{asset('storage/'.$item->image)}}" alt="Imagem do Item" class="img-fluid">
         </div>

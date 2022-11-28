@@ -21,7 +21,7 @@ Route::controller(LoginController::class)->group(function() {
   Route::get('logout', 'logout')->name('logout');
 });
 
-Route::controller(ManagerController::class)->prefix('manager')->group(function () {
+Route::controller(ManagerController::class)->middleware('auth')->prefix('manager')->group(function () {
   Route::get('items', 'items')->name('manager.items');
   Route::get('delete/{item}', 'delete')->name('manager.delete');
   Route::get('create', 'create')->name('manager.create');

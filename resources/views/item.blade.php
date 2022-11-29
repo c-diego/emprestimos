@@ -71,7 +71,7 @@
 
       const datepicker = new Datepicker(elem, options);
       const datepicker2 = new Datepicker(elem2, options);
-
+      
     </script>
   @endpush
 @endsection

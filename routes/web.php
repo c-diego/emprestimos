@@ -16,24 +16,24 @@ use \App\Http\Controllers\LoginController;
 */
 
 Route::controller(LoginController::class)->group(function() {
-  Route::post('login', 'authenticate')->name('login');
-  Route::get('login', 'formLogin')->name('formlogin');
-  Route::get('logout', 'logout')->name('logout');
+  Route::post('/login', 'authenticate')->name('login');
+  Route::get('/login', 'formLogin')->name('formlogin');
+  Route::get('/logout', 'logout')->name('logout');
 });
 
-Route::controller(ManagerController::class)->middleware('auth')->prefix('manager')->group(function () {
-  Route::get('items', 'items')->name('manager.items');
-  Route::get('delete/{item}', 'delete')->name('manager.delete');
-  Route::get('create', 'create')->name('manager.create');
-  Route::post('save', 'save')->name('manager.save');
-  Route::get('edit/{item}', 'edit')->name('manager.edit');
-  Route::post('update/{item}', 'update')->name('manager.update');
+Route::controller(ManagerController::class)->middleware('auth')->prefix('gerente/')->group(function () {
+  Route::get('itens', 'items')->name('manager.items');
+  Route::get('itens/{item}/deletar', 'delete')->name('manager.delete');
+  Route::get('itens/item/novo', 'create')->name('manager.create');
+  Route::post('itens/item/salvar', 'save')->name('manager.save');
+  Route::get('itens/{item}/editar', 'edit')->name('manager.edit');
+  Route::post('itens/{item}/alterar', 'update')->name('manager.update');
 });
 
 Route::controller(HomeController::class)->group(function () {
-  Route::get('/', 'index')->name('home');
-  Route::post('/', 'search')->name('search');
-  Route::get('/profile', 'profile')->middleware('auth')->name('profile');
-  Route::get('/item/{item}', 'showItem')->name('item');
-  Route::post('/reserve/{item}', 'reserveItem')->middleware('auth')->name('reserve');
+  Route::get('', 'index')->name('home');
+  Route::post('/home', 'search')->name('search');
+  Route::get('/itens/{item}', 'showItem')->name('item');
+  Route::get('/perfil', 'profile')->middleware('auth')->name('profile');
+  Route::post('/itens/{item}/solicitar', 'reserveItem')->middleware('auth')->name('reserve');
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ReserveItemRequest;
+use App\Http\Requests\SearchRequest;
 use App\Models\Item;
 use App\Models\Loan;
 use App\Models\Sector;
@@ -10,7 +11,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class HomeController extends Controller
+class UserController extends Controller
 {
 
   public function index()
@@ -20,19 +21,22 @@ class HomeController extends Controller
 
   public function profile()
   {
-    return view('user.profile', ['loans' => Auth::user()->loans]);
+    return view('profile', ['loans' => Auth::user()->loans]);
   }
 
-  public function search(Request $request)
+  public function search(SearchRequest $searchRequest)
   {
-    if ($request->input('sector') == 'todos')
-      return view('home', ['items' => Item::where('title', 'like', '%' . $request->input('term') . '%')->paginate(10), 'sectors' => Sector::all()]);
-    return view('home', ['items' => Item::where('title', 'like', '%' . $request->input('term') . '%')->where('sector_id', $request->input('sector'))->paginate(10), 'sectors' => Sector::all()]);
+    $validated = $searchRequest->validated();
+
+    if ($validated['sector'] == 'todos')
+      return view('home', ['items' => Item::where('title', 'like', '%' . $validated['term'] . '%')->paginate(10), 'sectors' => Sector::all()]);
+
+    return view('home', ['items' => Item::where('title', 'like', '%' . $validated['term'] . '%')->where('sector_id', $validated['sector'])->paginate(10), 'sectors' => Sector::all()]);
   }
 
   public function showItem(Item $item)
   {
-    return view('user.item', ['item' => $item]);
+    return view('item', ['item' => $item]);
   }
 
   public function reserveItem(Item $item, ReserveItemRequest $reserveItemRequest)
@@ -42,7 +46,7 @@ class HomeController extends Controller
     $loan->fill($validated);
     $loan->has_ended = false;
     Loan::saveLoan($loan, $item);
-    return redirect('/');
+    return redirect()->intended(route('home'));
   }
 
 }

@@ -9,7 +9,7 @@
     <h2 class="fs-6 mb-2">Pesquisa</h2>
     <div class="row mb-5">
       <div class="col-sm-6">
-        <input type="text" class="form-control rounded-0">
+        <input type="text" class="form-control rounded-0" placeholder="Nome do objeto">
       </div>
       <div class="col mt-2 mt-sm-0">
         <button type="button" class="btn btn-primary rounded-0 fw-semibold">Pesquisar</button>

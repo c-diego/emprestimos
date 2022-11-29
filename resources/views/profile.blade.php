@@ -9,7 +9,7 @@
     <form>
       <div class="row mt-3 align-items-center">
         <div class="col-md-4">
-          <input type="text" class="form-control bg-cinza rounded-0 pt-1 pb-1" placeholder="Adaptadorzim">
+          <input type="text" class="form-control bg-cinza rounded-0 pt-1 pb-1" placeholder="Nome do objeto">
         </div>
         <div class="col">
           <select class="form-select bg-cinza rounded-0 pt-1 pb-1">

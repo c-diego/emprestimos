@@ -19,11 +19,9 @@ class LoginController extends Controller
   {
     $validated = $loginRequest->validated();
 
-    if (Auth::attempt($validated)) {
-      return redirect()->intended('/');
-    } else {
-      dd("senha errada");
-    }
+    if (Auth::attempt($validated))
+      return redirect()->intended(route('home'));
+    return redirect()->intended(route('formLogin'))->withErrors('Login inválido.');
   }
 
   public function formLogin()
@@ -34,6 +32,6 @@ class LoginController extends Controller
   public function logout()
   {
     Auth::logout();
-    return redirect('login');
+    return redirect()->intended(route('login'));
   }
 }

@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ManagerController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use \App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +30,7 @@ Route::controller(ManagerController::class)->middleware('auth')->prefix('gerente
   Route::post('itens/{item}/alterar', 'update')->name('manager.update');
 });
 
-Route::controller(HomeController::class)->group(function () {
+Route::controller(UserController::class)->group(function () {
   Route::get('', 'index')->name('home');
   Route::post('/home', 'search')->name('search');
   Route::get('/itens/{item}', 'showItem')->name('item');

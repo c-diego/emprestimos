@@ -17,7 +17,7 @@
           <div class="col-md-7">
             <div class="input-group mb-3">
               <input type="text" name="term" class="form-control bg-gray border-gray rounded-0 pt-1 pb-1"
-                     placeholder="Nome do objeto">
+                     placeholder="Nome do objeto" value="{{old('term')}}">
             </div>
           </div>
         </div>

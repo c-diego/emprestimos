@@ -66,4 +66,9 @@ class ManagerController extends Controller
     $item->save();
     return redirect()->intended(route('manager.items'));
   }
+  public function solicitations()
+  {
+    return view('manager.solicitation');
+  }
+
 }

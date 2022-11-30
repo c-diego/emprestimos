@@ -22,12 +22,13 @@ Route::controller(LoginController::class)->group(function() {
 });
 
 Route::controller(ManagerController::class)->middleware('auth')->prefix('gerente/')->group(function () {
-  Route::get('itens', 'items')->name('manager.items');
+  Route::get('/', 'items')->name('manager.items');
   Route::get('itens/{item}/deletar', 'delete')->name('manager.delete');
   Route::get('itens/item/novo', 'create')->name('manager.create');
   Route::post('itens/item/salvar', 'save')->name('manager.save');
   Route::get('itens/{item}/editar', 'edit')->name('manager.edit');
   Route::post('itens/{item}/alterar', 'update')->name('manager.update');
+  Route::get('solicitacoes', 'solicitations')->name('manager.solicitations');
 });
 
 Route::controller(UserController::class)->group(function () {

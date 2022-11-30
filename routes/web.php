@@ -29,6 +29,8 @@ Route::controller(ManagerController::class)->middleware('auth')->prefix('gerente
   Route::get('itens/{item}/editar', 'edit')->name('manager.edit');
   Route::post('itens/{item}/alterar', 'update')->name('manager.update');
   Route::get('solicitacoes', 'solicitations')->name('manager.solicitations');
+  Route::get('solicitacoes/{loan}/aprovar', 'approveSolicitation')->name('manager.approveSolicitation');
+  Route::get('solicitacoes/{loan}/negar', 'denySolicitation')->name('manager.denySolicitation');
 });
 
 Route::controller(UserController::class)->group(function () {

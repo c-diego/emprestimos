@@ -45,7 +45,7 @@
           <td>{{$loan->start_date}}</td>
           <td>{{$loan->end_date}}</td>
           <td>{{$loan->amount}}</td>
-          <td>Aprovado</td>
+          <td>{{$loan->situation}}</td>
         </tr>
       @endforeach
       </tbody>

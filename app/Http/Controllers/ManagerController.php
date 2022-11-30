@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ItemRequest;
 use App\Models\Item;
+use App\Models\Loan;
 use App\Models\Sector;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -66,9 +65,25 @@ class ManagerController extends Controller
     $item->save();
     return redirect()->intended(route('manager.items'));
   }
+
   public function solicitations()
   {
-    return view('manager.solicitation');
+    return view('manager.solicitations', ['solicitations' => Loan::where('situation', 'Pendente')->get()]);
+  }
+
+  public function approveSolicitation(Loan $loan)
+  {
+    $loan->situation = 'Aprovado';
+    $loan->save();
+    return redirect()->intended(route('manager.solicitations'));
+  }
+
+
+  public function denySolicitation(Loan $loan)
+  {
+    $loan->situation = 'Negado';
+    $loan->save();
+    return redirect()->intended(route('manager.solicitations'));
   }
 
 }

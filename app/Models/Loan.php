@@ -14,7 +14,8 @@ class Loan extends Model
     'start_date',
     'end_date',
     'has_ended',
-    'amount'
+    'amount',
+    'situation'
   ];
 
   public static function saveLoan(Loan $loan, Item $item)
@@ -23,6 +24,8 @@ class Loan extends Model
     if (!$item->is_available) {
       return false;
     }
+    $loan->has_ended = false;
+    $loan->situation = 'Pendente';
     $loan->item()->associate($item);
     $loan->user()->associate(Auth::user());
     $loan->save();

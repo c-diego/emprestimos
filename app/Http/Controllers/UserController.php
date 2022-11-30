@@ -44,7 +44,6 @@ class UserController extends Controller
     $validated = $reserveItemRequest->validated();
     $loan = new Loan();
     $loan->fill($validated);
-    $loan->has_ended = false;
     Loan::saveLoan($loan, $item);
     return redirect()->intended(route('home'));
   }

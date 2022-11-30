@@ -35,12 +35,15 @@
       @if(isset($solicitations))
         @foreach($solicitations as $solicitation)
           <tr>
-            <td>{{$solicitation->item->author}}</td>
+            <td>{{$solicitation->user->name}}</td>
             <td>{{$solicitation->item->title}}</td>
             <td>{{$solicitation->start_date}}</td>
             <td>{{$solicitation->end_date}}</td>
             <td>{{$solicitation->amount}}</td>
-            <td>Aprovar | Negar</td>
+            <td>
+              <a href="{{route('manager.approveSolicitation', ['loan' => $solicitation])}}">Aprovar</a>|
+              <a href="{{route('manager.denySolicitation', ['loan' => $solicitation])}}">Negar</a>
+            </td>
           </tr>
         @endforeach
       @endif

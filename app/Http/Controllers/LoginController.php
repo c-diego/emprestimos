@@ -18,10 +18,9 @@ class LoginController extends Controller
   public function authenticate(LoginRequest $loginRequest)
   {
     $validated = $loginRequest->validated();
-
     if (Auth::attempt($validated))
       return redirect()->intended(route('home'));
-    return redirect()->intended(route('formLogin'))->withErrors('Login inválido.');
+    return redirect()->intended(route('formlogin'))->withErrors(['key' => 'strign']);
   }
 
   public function formLogin()

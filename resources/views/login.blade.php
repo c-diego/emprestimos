@@ -34,7 +34,7 @@
           <div class="row mt-2">
             <div class="col">
               <label for="password" class="form-label">Senha</label>
-              <input type="password" class="form-control rounded-0" id="password" name="password">
+              <input type="password" min="8" class="form-control rounded-0" id="password" name="password">
             </div>
           </div>
 

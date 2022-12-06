@@ -23,6 +23,10 @@ class User extends Authenticatable
     'is_manager',
   ];
 
+  public function sector() {
+    return $this->belongsTo(Sector::class);
+  }
+
   /**
    * The attributes that should be hidden for serialization.
    *

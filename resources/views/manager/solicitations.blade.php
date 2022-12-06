@@ -19,35 +19,39 @@
     </form>
   </div>
 
-  <div class="container mt-5 text-center">
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th scope="col">Requerente</th>
-        <th scope="col">Objeto</th>
-        <th scope="col">Retirada</th>
-        <th scope="col">Devolução</th>
-        <th scope="col">Quantidade</th>
-        <th scope="col">Situação</th>
-      </tr>
-      </thead>
-      <tbody class="">
-      @if(isset($solicitations))
-        @foreach($solicitations as $solicitation)
-          <tr>
-            <td>{{$solicitation->user->name}}</td>
-            <td>{{$solicitation->item->title}}</td>
-            <td>{{$solicitation->start_date}}</td>
-            <td>{{$solicitation->end_date}}</td>
-            <td>{{$solicitation->amount}}</td>
-            <td>
-              <a href="{{route('manager.approveSolicitation', ['loan' => $solicitation])}}">Aprovar</a>|
-              <a href="{{route('manager.denySolicitation', ['loan' => $solicitation])}}">Negar</a>
-            </td>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped">
+          <thead>
+          <tr class="text-center">
+            <th scope="col">Requerente</th>
+            <th scope="col">Objeto</th>
+            <th scope="col">Retirada</th>
+            <th scope="col">Devolução</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Situação</th>
           </tr>
-        @endforeach
-      @endif
-      </tbody>
-    </table>
+          </thead>
+          <tbody class="align-middle">
+          @if(isset($solicitations))
+            @foreach($solicitations as $solicitation)
+              <tr>
+                <td class="text-center">{{$solicitation->user->name}}</td>
+                <td class="text-center">{{$solicitation->item->title}}</td>
+                <td class="text-center">{{$solicitation->start_date}}</td>
+                <td class="text-center">{{$solicitation->end_date}}</td>
+                <td class="text-center">{{$solicitation->amount}}</td>
+                <td class="text-center">
+                  <a href="{{route('manager.approveSolicitation', ['loan' => $solicitation])}}" class="btn btn-success rounded-0 fw-semibold ps-md-5 pe-md-5 pt-1 pb-1">Aprovar</a>
+                  <a href="{{route('manager.denySolicitation', ['loan' => $solicitation])}}" class="btn btn-danger rounded-0 fw-semibold ps-md-5 pe-md-5 pt-1 pb-1">Negar</a>
+                </td>
+              </tr>
+            @endforeach
+          @endif
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 @endsection
